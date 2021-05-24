@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import json
 import pandas as pd
 import os
+import random
 
 r = Request('https://br.investing.com/economic-calendar/', headers={'User-Agent': 'Mozilla/5.0'})
 response = urlopen(r).read()
@@ -43,7 +44,7 @@ f_df = df[ (df['intensity'].str.strip().isin(vol_list) & (df['currency'].str.str
 
 df_styled = f_df[['horario','evento']]
 
-
+welcome_msg = random.choice(["Bom dia, bons negócios!","Segue a agenda de eventos mais relevantes para o dia de BRL e USD","Bom dia!!", "Bons negócios!!"])
 
 
 

@@ -24,7 +24,7 @@ headers = {'X-Restli-Protocol-Version': '2.0.0',
 
 
 
-publication = df_styled.to_string(index=False)
+publication = welcome_msg + "\n" + df_styled.to_string(index=False)
 
 def post_link():
   api_url = url

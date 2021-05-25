@@ -4,6 +4,7 @@ import json
 import pandas as pd
 import os
 import random
+from quote import *
 
 r = Request('https://br.investing.com/economic-calendar/', headers={'User-Agent': 'Mozilla/5.0'})
 response = urlopen(r).read()
@@ -42,9 +43,9 @@ vol_list = ['Volatilid. Esperada Alta','Volatilid. Esperada Moderada']
 
 f_df = df[ (df['intensity'].str.strip().isin(vol_list) & (df['currency'].str.strip().isin(currency_list) ) )]
 
-df_styled = f_df[['horario','evento']]
+df_styled = f_df[['horario','currency','evento']]
 
-welcome_msg = random.choice(["Bom dia, bons negócios!","Segue a agenda de eventos mais relevantes para o dia de BRL e USD","Bom dia!!", "Bons negócios!!"])
+welcome_msg = random.choice(["Bom dia, bons negócios!","Segue a agenda de eventos mais relevantes para o dia de BRL e USD","Bom dia!!",quote_day])
 
 
 

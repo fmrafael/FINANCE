@@ -10,6 +10,7 @@ bs4 = "^0.0.1"
 arrow = "^1.1.0"
 pandas = "^1.2.4"
 linkedin = "^0.1.5"
+selenium = "^3.141.0"
 
 [tool.poetry.dev-dependencies]
 

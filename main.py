@@ -41,7 +41,7 @@ def post_link():
             },
         },
         "visibility": {
-            "com.linkedin.ugc.MemberNetworkVisibility": "CONNECTIONS"
+            "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
         },
     }
 

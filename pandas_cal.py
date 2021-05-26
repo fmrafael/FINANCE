@@ -36,7 +36,7 @@ df = pd.DataFrame(list(zip(r_time,r_evento,r_currency,r_intensity)),columns=['ho
 pd.set_option('display.max_rows', 500)
 
  
-currency_list = ['USD','BRL']
+currency_list = ['USD','BRL','EUR']
 vol_list = ['Volatilid. Esperada Alta','Volatilid. Esperada Moderada']
 #vol = 
 
@@ -45,7 +45,9 @@ f_df = df[ (df['intensity'].str.strip().isin(vol_list) & (df['currency'].str.str
 
 df_styled = f_df[['horario','currency','evento']]
 
-welcome_msg = random.choice(["Bom dia, bons negócios!","Segue a agenda de eventos mais relevantes para o dia de BRL e USD","Bom dia!!",quote_day])
+welcome_msg = quote_day
+
+#random.choice(["Bom dia, bons negócios!","Segue a agenda de eventos mais relevantes para o dia de BRL, USD e EUR","Bom dia!!",])
 
 
 

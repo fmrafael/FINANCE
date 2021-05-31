@@ -45,9 +45,9 @@ f_df = df[ (df['intensity'].str.strip().isin(vol_list) & (df['currency'].str.str
 
 df_styled = f_df[['horario','currency','evento']]
 
-welcome_msg = quote_day
+welcome_msg = random.choice(["Bom dia, bons negócios!","Segue a agenda de eventos mais relevantes para o dia de BRL, USD e EUR","Bom dia!!",quote_day, "Agenda Econômica para o dia",""])
 
-#random.choice(["Bom dia, bons negócios!","Segue a agenda de eventos mais relevantes para o dia de BRL, USD e EUR","Bom dia!!",])
+
 
 
 

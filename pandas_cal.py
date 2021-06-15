@@ -4,7 +4,8 @@ import json
 import pandas as pd
 import os
 import random
-from quote import *
+import requests
+
 
 r = Request('https://br.investing.com/economic-calendar/', headers={'User-Agent': 'Mozilla/5.0'})
 response = urlopen(r).read()
@@ -65,7 +66,34 @@ rain = response_rain['forecast']['forecastday'][0]['day']['daily_chance_of_rain'
 
 
 
-welcome_msg = f'Mínima/Máxima temperatura em SP: {min_temp_sp}- {max_temp_sp} °C, probabilidade de chuva: {rain}%.' '  ' + random.choice(["Bom dia, bons negócios!","Segue a agenda de eventos mais relevantes para o dia de BRL, USD e EUR","Bom dia!!",quote_day, "Agenda Econômica para o dia",""])
+API_KEY_FX = os.environ['API_KEY_FX']
+
+#FX_closing
+
+url_fx = f'https://fcsapi.com/api-v3/forex/latest?id=1799&access_key={API_KEY_FX}'
+
+r_fx = requests.request("GET",url_fx)
+
+data_fx = r_fx.json()['response']
+data_f = ", ".join([data['c'] for data in data_fx])
+
+
+#quote_day
+r_q = requests.get("https://quotes.rest/qod?category=inspire&language=en")
+
+response = r_q.json()
+
+author = response['contents']['quotes'][0]['quote'][0]
+
+quote = response['contents']['quotes'][0]['quote'] 
+author = response['contents']['quotes'][0]['author'] 
+
+quote_day = f"{quote} {author}"
+
+
+
+
+welcome_msg = f'Mínima/Máxima temperatura em SP: {min_temp_sp}- {max_temp_sp} °C, probabilidade de chuva: {rain}%. Dolar fechou cotado ontem a {data_f}.' '  ' + random.choice(["Bom dia, bons negócios!","Segue a agenda de eventos mais relevantes para o dia de BRL, USD e EUR",quote_day, "Agenda Econômica para o dia"])
 
 
 
